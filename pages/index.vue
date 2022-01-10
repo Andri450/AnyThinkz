@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>sa</p>
+    <p>Hallo</p>
     <client-only>
       <vue-editor
         v-model="status.isi"
