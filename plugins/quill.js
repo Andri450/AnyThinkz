@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vue2Editor from 'vue2-editor'
+import 'quill-mention'
 
 // const options = {
 //   debug: 'info',
