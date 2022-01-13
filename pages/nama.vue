@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import '@/assets/style/coba.css'
+
 export default {
   name: 'NamaPage'
 }
