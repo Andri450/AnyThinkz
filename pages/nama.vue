@@ -1,6 +1,7 @@
 <template>
   <div>
     /masukin kode html di dalem sini
+    tes 123
   </div>
 </template>
 
