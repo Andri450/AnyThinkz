@@ -95,6 +95,13 @@ export default {
       ]
     }
   },
+  watch: {
+    'status.isi': {
+      handler (baru, lama) {
+        console.log(baru)
+      }
+    }
+  },
   created () {
     const status = this.$fireModule.database().ref('tb_status')
     status.on('value', this.resultdata, this.err)
@@ -109,6 +116,10 @@ export default {
       })
     },
     kirim () {
+      const awal = '<p> '
+      const akhir = ' </p>'
+      this.status.isi = awal + this.status.isi + akhir
+
       if (this.status.isi.search('<p>') >= 0 && this.status.isi.search('</p>') >= 0) {
         const status = this.$fireModule.database().ref('tb_status')
         status.push(this.status)
