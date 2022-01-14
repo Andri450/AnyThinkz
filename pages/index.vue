@@ -101,16 +101,23 @@ export default {
   },
   methods: {
     resultdata (items) {
-      this.user = []
-      // console.log(items);
-      this.dats = items.val()
-      // items.forEach((item) => {
-      //   this.dats = item.val()
-      // })
+      this.dats = []
+      items.forEach((item) => {
+        if (item.val().isi.search('<p>') >= 0 && item.val().isi.search('</p>') >= 0) {
+          this.dats.push(item.val())
+        }
+      })
     },
     kirim () {
-      const status = this.$fireModule.database().ref('tb_status')
-      status.push(this.status)
+      if (this.status.isi.search('<p>') >= 0 && this.status.isi.search('</p>') >= 0) {
+        const status = this.$fireModule.database().ref('tb_status')
+        status.push(this.status)
+        this.status.isi = ''
+        alert('Berhasil Diupload')
+      } else {
+        this.status.isi = ''
+        alert('XSS???')
+      }
     }
   }
 }
