@@ -208,11 +208,14 @@ export default {
   vertical-align: middle;
 }
 .ql-mention-list-item.selected{
-  background-color: #d3e1eb;
+  background-color: #96b3c7;
+  color: whitesmoke;
   text-decoration: none;
 }
 .mention {
-  background-color: #d3e1eb;
+  background-color: #96b3c7;
+  color: whitesmoke;
   padding: 5px;
+  border-radius: 4px;
 }
 </style>
