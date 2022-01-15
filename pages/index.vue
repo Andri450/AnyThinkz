@@ -58,7 +58,8 @@ export default {
         [{ color: [] }]
       ],
       ShowDats: [],
-      NewDats: []
+      NewDats: [],
+      filter_kata: []
     }
   },
   computed: {
@@ -102,11 +103,11 @@ export default {
     }
   },
   watch: {
-    'status.isi': {
-      handler (baru, lama) {
-        console.log(baru)
-      }
-    },
+    // 'status.isi': {
+    //   handler (baru, lama) {
+    //     console.log(baru)
+    //   }
+    // },
     NewDats: {
       handler (baru, lama) {
         const jumlah = baru.length - this.ShowDats.length
@@ -121,14 +122,17 @@ export default {
   },
   created () {
     const status = this.$fireModule.database().ref('tb_status')
-    status.on('value', this.resultdata, this.err)
+    const FilterKata = this.$fireModule.database().ref('filter_kata')
+
+    status.on('value', this.fetch_status, this.err)
+    FilterKata.on('value', this.fetch_filter_kata, this.err)
   },
   methods: {
     refresh_halaman () {
       this.ShowDats = this.NewDats
       this.refresh = false
     },
-    resultdata (items) {
+    fetch_status (items) {
       this.NewDats = []
       items.forEach((item) => {
         if (item.val().isi.search('<p>') >= 0 && item.val().isi.search('</p>') >= 0) {
@@ -144,16 +148,28 @@ export default {
         this.refresh_halaman()
       }
     },
+    fetch_filter_kata (hsl) {
+      hsl.forEach((item) => {
+        this.filter_kata.push(item.val().isi)
+      })
+    },
     kirim () {
       const awal = '<p> '
       const akhir = ' </p>'
       this.status.isi = awal + this.status.isi + akhir
-
+      const banned = []
+      this.filter_kata.forEach((item) => {
+        banned.push(item)
+      })
+      for (let i = 0; i < banned.length; i++) {
+        const regEx = new RegExp(banned[i], 'ig')
+        this.status.isi = this.status.isi.replace(regEx, banned[i][0] + '*'.repeat(banned[i].length - 1))
+      }
       if (this.status.isi.search('<p>') >= 0 && this.status.isi.search('</p>') >= 0) {
         const status = this.$fireModule.database().ref('tb_status')
         status.push(this.status)
         this.status.isi = ''
-        alert('Berhasil Diupload')
+        this.refresh_halaman()
       } else {
         this.status.isi = ''
         alert('XSS???')
