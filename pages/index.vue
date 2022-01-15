@@ -98,7 +98,9 @@ export default {
         { id: 1, value: 'SMKN 8 Bandar Lampung' },
         { id: 2, value: 'ITERA' },
         { id: 3, value: 'Polinela' },
-        { id: 4, value: 'SMA 9 Bandar Lampung' }
+        { id: 4, value: 'SMA 9 Bandar Lampung' },
+        { id: 4, value: 'SMA 91 Bandar Lampung' },
+        { id: 4, value: 'SMA 93 Bandar Lampung' }
       ]
     }
   },
@@ -182,14 +184,35 @@ export default {
 
 <style>
 .ql-mention-list{
-  background-color: tomato;
-  padding: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.ql-mention-list-container {
+  width: 270px;
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(30, 30, 30, 0.08);
+  z-index: 9001;
 }
 .ql-mention-list-item{
-  background-color: turquoise;
-  list-style: none;
+  cursor: pointer;
+  height: 44px;
+  line-height: 44px;
+  font-size: 16px;
+  padding: 0 20px;
+  vertical-align: middle;
 }
-.ql-mention-list-item > .selected{
-  background-color: violet;
+.ql-mention-list-item.selected{
+  background-color: #d3e1eb;
+  text-decoration: none;
+}
+.mention {
+  background-color: #d3e1eb;
+  padding: 5px;
 }
 </style>
