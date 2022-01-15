@@ -11,9 +11,12 @@
       <button @click="kirim()">
         Kirim
       </button>
+      <button v-if="refresh" @click="refresh_halaman()">
+        {{ isi_refresh }}
+      </button>
     </client-only>
     <div>
-      <div v-for="data in dats" :id="data.isi" :key="data.key" class="s p-10 mb-20">
+      <div v-for="data in ShowDats" :id="data.key" :key="data.key" class="s p-10 mb-20">
         <div class="a">
           <!-- eslint-disable vue/no-v-html -->
           <p v-html="data.isi" />
@@ -30,6 +33,8 @@ export default {
   name: 'IndexPage',
   data () {
     return {
+      refresh: false,
+      isi_refresh: '',
       status: {
         isi: ''
       },
@@ -52,7 +57,8 @@ export default {
         ],
         [{ color: [] }]
       ],
-      dats: []
+      ShowDats: [],
+      NewDats: []
     }
   },
   computed: {
@@ -100,6 +106,17 @@ export default {
       handler (baru, lama) {
         console.log(baru)
       }
+    },
+    NewDats: {
+      handler (baru, lama) {
+        const jumlah = baru.length - this.ShowDats.length
+        this.isi_refresh = jumlah + ' status baru'
+        if (jumlah > 0) {
+          this.refresh = true
+        } else {
+          this.refresh = false
+        }
+      }
     }
   },
   created () {
@@ -107,13 +124,25 @@ export default {
     status.on('value', this.resultdata, this.err)
   },
   methods: {
+    refresh_halaman () {
+      this.ShowDats = this.NewDats
+      this.refresh = false
+    },
     resultdata (items) {
-      this.dats = []
+      this.NewDats = []
       items.forEach((item) => {
         if (item.val().isi.search('<p>') >= 0 && item.val().isi.search('</p>') >= 0) {
-          this.dats.push(item.val())
+          this.NewDats.push(
+            {
+              key: item.key,
+              isi: item.val().isi
+            }
+          )
         }
       })
+      if (this.ShowDats.length === 0) {
+        this.refresh_halaman()
+      }
     },
     kirim () {
       const awal = '<p> '
