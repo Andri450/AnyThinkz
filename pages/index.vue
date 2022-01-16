@@ -14,6 +14,7 @@
       <button v-if="refresh" @click="refresh_halaman()">
         {{ isi_refresh }}
       </button>
+      <p>{{ status.penulis }}</p>
     </client-only>
     <div>
       <div v-for="data in ShowDats" :id="data.key" :key="data.key" class="s p-10 mb-20">
@@ -36,7 +37,8 @@ export default {
       refresh: false,
       isi_refresh: '',
       status: {
-        isi: ''
+        isi: '',
+        penulis: ''
       },
       atValues: [
         { id: 1, value: 'Fredrik Sundqvist' },
@@ -59,7 +61,8 @@ export default {
       ],
       ShowDats: [],
       NewDats: [],
-      filter_kata: []
+      filter_kata: [],
+      at_mention: []
     }
   },
   computed: {
@@ -94,14 +97,7 @@ export default {
       }
     },
     DatValues () {
-      return [
-        { id: 1, value: 'SMKN 8 Bandar Lampung' },
-        { id: 2, value: 'ITERA' },
-        { id: 3, value: 'Polinela' },
-        { id: 4, value: 'SMA 9 Bandar Lampung' },
-        { id: 4, value: 'SMA 91 Bandar Lampung' },
-        { id: 4, value: 'SMA 93 Bandar Lampung' }
-      ]
+      return this.at_mention
     }
   },
   watch: {
@@ -125,9 +121,18 @@ export default {
   created () {
     const status = this.$fireModule.database().ref('tb_status')
     const FilterKata = this.$fireModule.database().ref('filter_kata')
+    const AtMention = this.$fireModule.database().ref('at_mention')
 
     status.on('value', this.fetch_status, this.err)
     FilterKata.on('value', this.fetch_filter_kata, this.err)
+    AtMention.on('value', this.fetch_At_Mention, this.err)
+  },
+  mounted () {
+    if (window) {
+      if (localStorage.id) {
+        this.status.penulis = localStorage.id
+      }
+    }
   },
   methods: {
     refresh_halaman () {
@@ -153,6 +158,14 @@ export default {
     fetch_filter_kata (hsl) {
       hsl.forEach((item) => {
         this.filter_kata.push(item.val().isi)
+      })
+    },
+    fetch_At_Mention (hsl) {
+      hsl.forEach((item, id) => {
+        this.at_mention.push({
+          id,
+          value: item.val().isi
+        })
       })
     },
     kirim () {
