@@ -1,4 +1,4 @@
-
+import 'Vuex'
 import 'animate.css'
 import NamaPage from '@/components/Nama.vue'
 import HomePage from '@/components/Home.vue'
@@ -22,6 +22,7 @@ export default {
     }
   },
   created () {
+    this.komponen = this.$store.getters.gethalaman
     this.cek_identitas()
   },
   beforeMount () {
@@ -42,7 +43,7 @@ export default {
                 this.cek_nama()
               }
             }).catch((err) => {
-              alert(err)
+              console.log(err)
               this.buat_identitas()
             })
           } else {
@@ -75,9 +76,18 @@ export default {
     },
     cek_nama () {
       if (this.user_c.nama !== '') {
+        this.$store.commit('updateHalaman', 'HomePage')
         this.komponen = 'HomePage'
       } else {
+        this.$store.commit('updateHalaman', 'NamaPage')
         this.komponen = 'NamaPage'
+      }
+    }
+  },
+  watch: {
+    '$store.state.halaman': {
+      handler (dat) {
+        this.komponen = dat
       }
     }
   }

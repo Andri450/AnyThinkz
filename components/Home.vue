@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Hallo</p>
+    <p>Hallo {{ nama }}</p>
     <client-only>
       <vue-editor
         v-model="status.isi"
@@ -43,6 +43,7 @@ export default {
   name: 'HomePage',
   data () {
     return {
+      nama: '',
       refresh: false,
       isi_refresh: '',
       status: {
@@ -137,6 +138,7 @@ export default {
     AtMention.on('value', this.fetch_At_Mention, this.err)
   },
   mounted () {
+    this.nama = localStorage.getItem('nama')
     if (window) {
       if (localStorage.id) {
         this.status.penulis = localStorage.id

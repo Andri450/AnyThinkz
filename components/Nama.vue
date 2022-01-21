@@ -46,9 +46,10 @@ export default {
     simpan () {
       const user = this.$fireModule.database().ref('tb_users')
       user.child(localStorage.getItem('IDu')).update(this.usr).then(() => {
-        this.$router.go('/')
+        this.$store.commit('updateHalaman', 'HomePage')
+        localStorage.nama = this.usr.nama
       }).catch((err) => {
-        console.log(err)
+        alert(err)
       })
     }
   }
