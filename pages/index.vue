@@ -11,34 +11,6 @@
 </template>
 
 <script>
-import 'animate.css'
-import NamaPage from './../components/Nama.vue'
-import HomePage from './../components/Home.vue'
-
-export default {
-  name: 'IndexPage',
-  components: {
-    HomePage,
-    NamaPage
-  },
-  data () {
-    return {
-      id: '',
-      tanya_nama: 'sa',
-      komponen: 'NamaPage'
-    }
-  },
-  created () {
-    this.cek_data()
-  },
-  beforeMount () {
-
-  },
-  methods: {
-    cek_data () {
-      // alert('oke')
-    }
-  }
-}
-
+import app from '@/assets/js'
+export default app
 </script>

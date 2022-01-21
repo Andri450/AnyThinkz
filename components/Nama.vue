@@ -23,8 +23,8 @@
         </p>
       </b-col>
       <b-col class="mt-28 mb-5" cols="12">
-        <b-form-input placeholder="nama samaran kamu..." />
-        <b-button block class="mt-20 p-3 button-block-submit orange">
+        <b-form-input v-model="usr.nama" placeholder="nama samaran kamu..." />
+        <b-button block class="mt-20 p-3 button-block-submit orange" @click="simpan()">
           Lanjutkan
         </b-button>
       </b-col>
@@ -34,7 +34,24 @@
 
 <script>
 export default {
-  name: 'NamaPage'
+  name: 'NamaPage',
+  data () {
+    return {
+      usr: {
+        nama: ''
+      }
+    }
+  },
+  methods: {
+    simpan () {
+      const user = this.$fireModule.database().ref('tb_users')
+      user.child(localStorage.getItem('IDu')).update(this.usr).then(() => {
+        this.$router.go('/')
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  }
 }
 </script>
 
