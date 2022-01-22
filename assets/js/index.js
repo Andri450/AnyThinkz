@@ -23,10 +23,9 @@ export default {
   },
   created () {
     this.komponen = this.$store.getters.gethalaman
-    this.cek_identitas()
   },
   beforeMount () {
-
+    this.cek_identitas()
   },
   methods: {
     cek_identitas () {

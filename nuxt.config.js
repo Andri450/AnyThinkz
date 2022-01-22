@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'AnyThinks',
+    title: 'AnyThinkz',
     htmlAttrs: {
       lang: 'en'
     },
@@ -24,7 +24,7 @@ export default {
   plugins: [
     { src: '~plugins/quill.js', ssr: false }
   ],
-  ssr: false,
+  ssr: true,
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
