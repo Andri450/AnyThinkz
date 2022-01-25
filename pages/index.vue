@@ -1,12 +1,11 @@
 <template>
   <div>
-    <transition
-      enter-active-class="animate__animated animate__fadeInUp"
-      leave-active-class="animate__animated animate__fadeOutDown"
-      mode="out-in"
-    >
-      <component :is="komponen" />
-    </transition>
+    <div v-if="komponen == 'NamaPage'" class="nama">
+      <NamaPage />
+    </div>
+    <div class="home">
+      <HomePage />
+    </div>
   </div>
 </template>
 

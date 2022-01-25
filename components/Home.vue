@@ -145,6 +145,9 @@ export default {
       }
     }
   },
+  updated () {
+    this.nama = localStorage.getItem('nama')
+  },
   methods: {
     refresh_halaman () {
       this.ShowDats = this.NewDats
