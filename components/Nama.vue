@@ -75,7 +75,7 @@ export default {
   .bungkus{
     position: fixed;
     z-index: 9998;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
     left: 0;
     top: 0;
     bottom: 0;
@@ -93,4 +93,5 @@ export default {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
 </style>

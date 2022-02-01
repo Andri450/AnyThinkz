@@ -1,0 +1,117 @@
+.ql-mention-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.ql-mention-list-container {
+    width: 270px;
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 12px 0 rgba(30, 30, 30, 0.08);
+    z-index: 9001;
+}
+  
+.ql-mention-list-item {
+    cursor: pointer;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    padding: 0 20px;
+    vertical-align: middle;
+}
+  
+.ql-mention-list-item.selected {
+    background-color: #96b3c7;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.mention {
+    background-color: #96b3c7;
+    color: whitesmoke;
+    padding: 5px;
+    border-radius: 4px;
+}
+  
+.mention > a{
+    color: whitesmoke;
+}
+
+body{
+    width: 380px;
+    margin: auto;
+    background-color: #F5F5F5;
+}
+
+.mt-68 {
+    margin-top: 68px;
+}
+.mt-36 {
+    margin-top: 36px;
+}
+.mt-16 {
+    margin-top: 16px;
+}
+.mt-28 {
+    margin-top: 28px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+
+.sapaan{
+    font-family: 'Quicksand', sans-serif;
+    font-weight:bold;
+    font-size: 36px;
+    color:#1C0C5B;
+}
+
+.btn-cari{
+    background-color:#1C0C5B;
+    font-family: 'Quicksand', sans-serif;
+    border:none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.orange,.orange:hover,.orange:focus,.orange:active {
+    background-color:#FE7E6D;
+}
+
+
+.form-control, .form-control:focus, .form-control:active {
+    border: 1.2px solid #8d97ad;
+    padding: 24px 12px;
+    font-family: 'Quicksand', sans-serif;
+    color: #8d97ad;
+    box-shadow: none;
+    outline: none;
+    border-radius: 6px;
+    background-color: #F5F5F5;
+}
+
+.form-control::placeholder {
+    color: #8d97ad;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    opacity: 1;
+}
+
+#dropdownMenuButton > button {
+    border: 1.2px solid #8d97ad;
+    background-color: #F5F5F5;
+    color: #8d97ad;
+    text-align: left;
+    box-shadow: none;
+}
+
+#dropdownMenuButton > item {
+    width: 100%;
+}

@@ -61,12 +61,13 @@ export default {
 
       const d = new Date()
       const dat = d.getDay().toString() + d.getMilliseconds().toString() + d.getFullYear().toString() + d.getSeconds().toString() + d.getMonth().toString() + d.getMinutes().toString()
-      this.user_c.Singularitas = dat
+      const singular = Math.round(new Date().getTime() / 1000)
+      this.user_c.Singularitas = dat + singular
 
       const user = this.$fireModule.database().ref('tb_users')
       user.push(this.user_c).then((dats) => {
         localStorage.IDu = dats.key
-        localStorage.Singularitas = dat
+        localStorage.Singularitas = dat + singular
         localStorage.nama = ''
         this.user_c.nama = ''
       })
