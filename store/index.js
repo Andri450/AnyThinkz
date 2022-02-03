@@ -1,10 +1,14 @@
 export const state = () => ({
-  halaman: ''
+  halaman: '',
+  KomponenAtas: ''
 })
 
 export const mutations = {
   updateHalaman (state, data) {
     state.halaman = data
+  },
+  updateKomponenAtas (state, data) {
+    state.KomponenAtas = data
   }
 }
 

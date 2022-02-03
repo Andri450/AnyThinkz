@@ -42,8 +42,13 @@ export default {
                 this.cek_nama()
               }
             }).catch((err) => {
-              console.log(err)
-              this.buat_identitas()
+              if (err === 'Error: Error: Client is offline.') {
+                console.log(err.error)
+                alert(err)
+              } else {
+                console.log(err.code)
+                alert(err.code)
+              }
             })
           } else {
             this.buat_identitas()

@@ -43,6 +43,7 @@
 }
 
 body{
+    transition: 3s ease-in-out;
     width: 380px;
     margin: auto;
     background-color: #F5F5F5;
@@ -77,8 +78,10 @@ body{
     border:none;
     border-radius: 6px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
+    margin-left: -6px;
     outline: none;
+    padding: 13px;
 }
 
 .orange,.orange:hover,.orange:focus,.orange:active {
@@ -110,8 +113,13 @@ body{
     color: #8d97ad;
     text-align: left;
     box-shadow: none;
+    padding: 8px;
 }
 
 #dropdownMenuButton > item {
     width: 100%;
+}
+
+.status{
+    transition: 10s ease-in-out;
 }
