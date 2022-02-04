@@ -9,7 +9,7 @@ export default {
   },
   data () {
     return {
-      KomponenAtas: 'TulisStatus',
+      KomponenAtas: 'SearchStatus',
       nama: '',
       refresh: false,
       isi_refresh: '',

@@ -46,7 +46,13 @@ body{
     transition: 3s ease-in-out;
     width: 380px;
     margin: auto;
-    background-color: #F5F5F5;
+    background-color: #F4f4f4;
+    /* overflow: hidden; */
+}
+
+.komponen-atas{
+    /* position: fixed;
+    width: 300px; */
 }
 
 .mt-68 {
@@ -121,5 +127,18 @@ body{
 }
 
 .status{
-    transition: 10s ease-in-out;
+    margin-top: 26px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.box-status{
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: #FBFBFB;
+    border-radius: 8px;
+}
+
+.foot-status{
+    margin: 0;
 }

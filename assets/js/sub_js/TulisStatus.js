@@ -73,6 +73,9 @@ export default {
       }
     }
   },
+  updated () {
+    // console.log('update tulis')
+  },
   methods: {
     pindah () {
       this.$store.commit('updateKomponenAtas', 'SearchStatus')

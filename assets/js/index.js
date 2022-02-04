@@ -25,7 +25,13 @@ export default {
     this.komponen = this.$store.getters.gethalaman
   },
   beforeMount () {
-    this.cek_identitas()
+    setInterval(() => {
+      if (localStorage.getItem('IDu') !== this.$store.getters.getIDu || localStorage.getItem('Singularitas') !== this.$store.getters.getSingular) {
+        this.cek_identitas()
+      }
+    }, 1000)
+  },
+  mounted () {
   },
   methods: {
     cek_identitas () {
@@ -42,12 +48,23 @@ export default {
                 this.cek_nama()
               }
             }).catch((err) => {
-              if (err === 'Error: Error: Client is offline.') {
-                console.log(err.error)
-                alert(err)
-              } else {
-                console.log(err.code)
-                alert(err.code)
+              if (err.message.includes('Cannot read properties of null')) {
+                this.buat_identitas()
+              } else if (err.message.includes('Client is offline')) {
+                this.$toast.error('Koneksi lu gk stabil', {
+                  position: 'top-center',
+                  timeout: 5000,
+                  closeOnClick: true,
+                  pauseOnFocusLoss: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  draggablePercent: 0.6,
+                  showCloseButtonOnHover: false,
+                  hideProgressBar: false,
+                  closeButton: 'button',
+                  icon: true,
+                  rtl: false
+                })
               }
             })
           } else {
@@ -73,6 +90,8 @@ export default {
       user.push(this.user_c).then((dats) => {
         localStorage.IDu = dats.key
         localStorage.Singularitas = dat + singular
+        this.$store.commit('updateIDu', dats.key)
+        this.$store.commit('updateSingular', dat + singular)
         localStorage.nama = ''
         this.user_c.nama = ''
       })
@@ -88,6 +107,9 @@ export default {
         this.komponen = 'NamaPage'
       }
     }
+  },
+  updated () {
+    // console.log('update')
   },
   watch: {
     '$store.state.halaman': {
