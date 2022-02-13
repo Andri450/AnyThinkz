@@ -26,13 +26,13 @@
 }
   
 .ql-mention-list-item.selected {
-    background-color: #96b3c7;
+    background-color: #FE7E6D;
     color: whitesmoke;
     text-decoration: none;
 }
 
 .mention {
-    background-color: #96b3c7;
+    background-color: #FE7E6D;
     color: whitesmoke;
     padding: 5px;
     border-radius: 4px;
@@ -84,6 +84,10 @@ body{
     font-weight:bold;
     font-size: 36px;
     color:#1C0C5B;
+}
+
+.sapaan-nama{
+    /* transition-delay: 4s; */
 }
 
 .btn-cari{
@@ -149,12 +153,14 @@ body{
 }
 
 .sts-cari {
-    transition-delay: 3s;
+    transition-delay: 1s;
     top: 238px;
+    margin-bottom: 290px;
 }
 
 .sts-post {
     top: 420px;
+    margin-bottom: 480px;
 }
 
 .box-status{
@@ -163,6 +169,10 @@ body{
     margin-bottom: 15px;
     background-color: #FBFBFB;
     border-radius: 8px;
+}
+
+.s{
+    transition: 1s ease-in-out;
 }
 
 .foot-status{
@@ -183,6 +193,7 @@ body{
 .komponen-tulis-sts{
     /* background-color: red; */
     margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 .btn-tulis-sts{
@@ -192,10 +203,16 @@ body{
 }
 
 .quill{
-    background-color: #F4f4f4;
-    border: 0;
+    box-shadow: none;
+    border-radius: 8px;
+    background-color: #FBFBFB;
+    border: none;
     outline: none !important;
     overflow: auto;
+}
+
+.ql-toolbar.ql-snow+.ql-container.ql-snow{
+    border: none;
 }
 
 .quillWrapper .ql-snow.ql-toolbar{

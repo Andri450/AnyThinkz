@@ -12,7 +12,6 @@ export default {
         ['bold', 'italic', 'underline', 'color', 'link'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         [
-          { align: '' },
           { align: 'center' },
           { align: 'right' },
           { align: 'justify' }

@@ -2,15 +2,17 @@
   <div>
     <b-container>
       <client-only>
-        <div class="komponen-atas">
+        <div class="komponen-atas p-2">
           <b-row>
-            <b-col cols="12" class="mt-20 sapaan">
-              <p>Hallo, {{ nama }}</p>
+            <b-col cols="12" class="mt-16 sapaan animate__animated animate__fadeInDown">
+              <p>
+                Hallo, <span class="sapaan-nama animate__animated animate__fadeInRight animate__delay-1s">{{ nama }}</span>
+              </p>
             </b-col>
           </b-row>
           <transition
-            enter-active-class="animate__animated animate__backInRight animate__slow"
-            leave-active-class="animate__animated animate__backOutRight animate__slow"
+            enter-active-class="animate__animated animate__fadeInRight"
+            leave-active-class="animate__animated animate__fadeOutRight"
             mode="out-in"
           >
             <component :is="KomponenAtas" />
@@ -19,13 +21,13 @@
       </client-only>
 
       <b-row>
-        <div class="status" :class="{ 'sts-cari': KomponenAtas === 'SearchStatus', 'sts-post': KomponenAtas === 'TulisStatus'}">
+        <div class="status p-2" :class="{ 'sts-cari': KomponenAtas === 'SearchStatus', 'sts-post': KomponenAtas === 'TulisStatus'}">
           <button v-if="refresh" @click="refresh_halaman()">
             {{ isi_refresh }}
           </button>
           <transition-group
-            enter-active-class="animate__animated animate__backInRight"
-            leave-active-class="animate__animated animate__backOutRight"
+            enter-active-class="animate__animated animate__fadeInDown"
+            leave-active-class="animate__animated animate__fadeOutUp"
             mode="out-in"
           >
             <div v-for="data in ShowDats" :id="data.key" :key="data.key" class="s p-10 mb-20">
