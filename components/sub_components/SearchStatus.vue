@@ -6,13 +6,13 @@
           <label>Cari topik yang ingin kamu baca</label>
         </b-col>
       </b-row>
-      <b-row>
+      <b-row class="mb-2">
         <b-col cols="10">
           <b-form-input v-model="search_status" placeholder="cari topik yang diinginkan..." />
         </b-col>
         <b-col cols="col">
           <b-button class="btn btn-cari" @click="Search()">
-            cari
+            <i class="fas fa-search" />
           </b-button>
         </b-col>
       </b-row>

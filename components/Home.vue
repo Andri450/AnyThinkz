@@ -19,12 +19,13 @@
           </transition>
         </div>
       </client-only>
-
       <b-row>
-        <div class="status p-2" :class="{ 'sts-cari': KomponenAtas === 'SearchStatus', 'sts-post': KomponenAtas === 'TulisStatus'}">
-          <button v-if="refresh" @click="refresh_halaman()">
+        <div v-if="refresh" class="col-12 bungkus-refresh" :class="{ 'refresh-cari': KomponenAtas === 'SearchStatus', 'refresh-tulis': KomponenAtas === 'TulisStatus'}">
+          <b-button class="btn-refresh btn-primary" @click="refresh_halaman()">
             {{ isi_refresh }}
-          </button>
+          </b-button>
+        </div>
+        <div class="status p-2" :class="{ 'sts-cari': KomponenAtas === 'SearchStatus', 'sts-post': KomponenAtas === 'TulisStatus'}">
           <transition-group
             enter-active-class="animate__animated animate__fadeInDown"
             leave-active-class="animate__animated animate__fadeOutUp"
@@ -53,7 +54,7 @@
         </div>
       </b-row>
       <b-row>
-        <div class="nav">
+        <div class="nav animate__animated animate__fadeInUp">
           <b-col>
             <p class="">
               Home
@@ -64,11 +65,11 @@
               Inbox
             </p>
           </b-col>
-          <b-col>
-            <p class="" @click="ganti_komponen_atas()">
-              Post
-            </p>
-          </b-col>
+          <div class="animate__animated animate__fadeInDown">
+            <div class="btn-plusclose" :class="{ 'plus': KomponenAtas === 'SearchStatus', 'xclose': KomponenAtas === 'TulisStatus'}" @click="ganti_komponen_atas()">
+              <i class="fas fa-plus" />
+            </div>
+          </div>
           <b-col>
             <p class="">
               notif
@@ -92,4 +93,5 @@ export default app
 
 <style>
   @import '@/assets/style/home.css';
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 </style>

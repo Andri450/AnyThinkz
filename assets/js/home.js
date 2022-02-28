@@ -29,6 +29,7 @@ export default {
     '$store.state.KomponenAtas': {
       handler (dat) {
         this.KomponenAtas = dat
+        this.refresh_halaman()
       }
     },
     NewDats: {
@@ -81,6 +82,16 @@ export default {
           status.on('value', this.fetch_status_search, this.err)
           this.refresh_halaman()
         }
+      },
+      '$store.state.posted': {
+        handler (dat) {
+          alert('da')
+          if (dat === true) {
+            // this.$store.commit('updatePosted', false)
+            this.refresh_halaman()
+            alert('da')
+          }
+        }
       }
     }
   },
@@ -106,7 +117,7 @@ export default {
       }
     },
     tes () {
-      document.getElementById('-Mv3hcIxLNNBtW0B7KyX').scrollIntoView({ behavior: 'smooth' })
+      alert('k')
     },
     hapus_data () {
       this.ShowDats = []

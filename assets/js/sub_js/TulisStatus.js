@@ -107,9 +107,11 @@ export default {
       if (this.status.isi.search('<p>') >= 0 && this.status.isi.search('</p>') >= 0) {
         this.status.CreatedAt = 0 - new Date().getTime()
         const status = this.$fireModule.database().ref('tb_status')
-        status.push(this.status)
-        this.status.isi = ''
-        // this.refresh_halaman()
+        status.push(this.status).then(() => {
+          this.status.isi = ''
+          // this.$store.commit('updatePosted', 'true')
+          this.pindah()
+        })
       } else {
         this.status.isi = ''
         alert('XSS???')

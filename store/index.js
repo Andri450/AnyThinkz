@@ -5,7 +5,8 @@ export const state = () => ({
   KomponenAtas: '',
   sort_status: 'postingan terbaru',
   search_status: '',
-  search: false
+  search: false,
+  posted: false
 })
 
 export const mutations = {
@@ -29,6 +30,9 @@ export const mutations = {
   },
   updateSearch (state, data) {
     state.search = data
+  },
+  updatePosted (state, data) {
+    state.posted = data
   }
 }
 
