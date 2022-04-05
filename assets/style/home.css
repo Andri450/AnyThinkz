@@ -205,11 +205,21 @@ body{
     text-align: center;
     position: fixed;
     bottom: 0;
-    padding: 15px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     width: 380px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color: #F4f4f4;
+    background-color: #FBFBFB;
+}
+
+.nav > .col{
+    position: relative;
+    top: 8px;
+    bottom: 0px;
 }
 
 .komponen-tulis-sts{

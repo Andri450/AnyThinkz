@@ -56,14 +56,14 @@
       <b-row>
         <div class="nav animate__animated animate__fadeInUp">
           <b-col>
-            <p class="">
-              Home
-            </p>
+            <div class="homebtn">
+              <i class="fas fa-home" />
+            </div>
           </b-col>
           <b-col>
-            <p class="">
-              Inbox
-            </p>
+            <div class="inbox">
+              <i class="fas fa-message" />
+            </div>
           </b-col>
           <div class="animate__animated animate__fadeInDown">
             <div class="btn-plusclose" :class="{ 'plus': KomponenAtas === 'SearchStatus', 'xclose': KomponenAtas === 'TulisStatus'}" @click="ganti_komponen_atas()">
@@ -71,14 +71,14 @@
             </div>
           </div>
           <b-col>
-            <p class="">
-              notif
-            </p>
+            <div class="notif">
+              <i class="fas fa-bell" />
+            </div>
           </b-col>
           <b-col>
-            <p class="">
-              Akun
-            </p>
+            <div class="akun">
+              <i class="fas fa-user" />
+            </div>
           </b-col>
         </div>
       </b-row>

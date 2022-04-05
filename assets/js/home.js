@@ -13,7 +13,7 @@ export default {
       nama: '',
       refresh: false,
       isi_refresh: '',
-      sort_status: 'postingan terbaru',
+      sort_status: '',
       search_status: '',
       search: 'false',
       ShowDats: [],
@@ -49,15 +49,29 @@ export default {
       handler (dat) {
         this.sort_status = dat
         if (dat === 'postingan terbaru') {
-          this.ShowDats = []
-          const status = this.$fireModule.database().ref('tb_status').orderByChild('CreatedAt')
-          status.on('value', this.fetch_status, this.err)
-          this.refresh_halaman()
+          if (this.$store.state.search_status === '') {
+            this.ShowDats = []
+            const status = this.$fireModule.database().ref('tb_status').orderByChild('CreatedAt')
+            status.on('value', this.fetch_status, this.err)
+            this.refresh_halaman()
+          } else {
+            this.ShowDats = []
+            const status = this.$fireModule.database().ref('tb_status').orderByChild('CreatedAt')
+            status.on('value', this.fetch_status_search, this.err)
+            this.refresh_halaman()
+          }
         } else if (dat === 'postingan terlama') {
-          this.ShowDats = []
-          const status = this.$fireModule.database().ref('tb_status')
-          status.on('value', this.fetch_status, this.err)
-          this.refresh_halaman()
+          if (this.$store.state.search_status === '') {
+            this.ShowDats = []
+            const status = this.$fireModule.database().ref('tb_status')
+            status.on('value', this.fetch_status, this.err)
+            this.refresh_halaman()
+          } else {
+            this.ShowDats = []
+            const status = this.$fireModule.database().ref('tb_status')
+            status.on('value', this.fetch_status_search, this.err)
+            this.refresh_halaman()
+          }
         }
       }
     },
@@ -66,8 +80,14 @@ export default {
         this.search = false
         this.$store.commit('updateSearch', false)
         this.search_status = dat
-        if (dat === '') {
+        if (dat === '' && this.sort_status === 'postingan terbaru') {
+          this.ShowDats = []
           const status = this.$fireModule.database().ref('tb_status').orderByChild('CreatedAt')
+          status.on('value', this.fetch_status, this.err)
+          this.refresh_halaman()
+        } else if (dat !== '' && this.sort_status === 'postingan terlama') {
+          this.ShowDats = []
+          const status = this.$fireModule.database().ref('tb_status')
           status.on('value', this.fetch_status, this.err)
           this.refresh_halaman()
         }
@@ -89,7 +109,6 @@ export default {
           if (dat === true) {
             // this.$store.commit('updatePosted', false)
             this.refresh_halaman()
-            alert('da')
           }
         }
       }
@@ -106,6 +125,7 @@ export default {
     this.nama = localStorage.getItem('nama')
   },
   updated () {
+    this.sort_status = this.$store.state.sort_status
     this.nama = localStorage.getItem('nama')
   },
   methods: {

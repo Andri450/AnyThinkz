@@ -109,8 +109,7 @@ export default {
         const status = this.$fireModule.database().ref('tb_status')
         status.push(this.status).then(() => {
           this.status.isi = ''
-          // this.$store.commit('updatePosted', 'true')
-          this.pindah()
+          this.$store.commit('updateSortStatus', 'postingan terbaru')
         })
       } else {
         this.status.isi = ''

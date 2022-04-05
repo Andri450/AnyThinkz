@@ -45,5 +45,8 @@ export const getters = {
   },
   getSingular: (state) => {
     return state.Singularitas
+  },
+  getSort_status: (state) => {
+    return state.sort_status
   }
 }
