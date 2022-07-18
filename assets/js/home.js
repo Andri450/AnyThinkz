@@ -146,6 +146,11 @@ export default {
       this.ShowDats = this.NewDats
       this.refresh = false
     },
+    refresh_halaman2 () {
+      this.ShowDats = this.NewDats
+      this.refresh = false
+      this.$store.commit('updateSortStatus', 'postingan terbaru')
+    },
     fetch_status (items) {
       this.NewDats = []
       items.forEach((item) => {

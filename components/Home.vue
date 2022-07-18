@@ -21,7 +21,7 @@
       </client-only>
       <b-row>
         <div v-if="refresh" class="col-12 bungkus-refresh" :class="{ 'refresh-cari': KomponenAtas === 'SearchStatus', 'refresh-tulis': KomponenAtas === 'TulisStatus'}">
-          <b-button class="btn-refresh btn-primary" @click="refresh_halaman()">
+          <b-button class="btn-refresh btn-primary" @click="refresh_halaman2()">
             {{ isi_refresh }}
           </b-button>
         </div>
