@@ -35,7 +35,7 @@
               <div class="box-status w-100">
                 <b-row>
                   <b-col cols="12" class="header-status">
-                    <h5>Anonim</h5>
+                    <h5><i class="fa-solid fa-user-secret purple-text"></i> Anonim</h5>
                   </b-col>
                 </b-row>
                 <b-row>
@@ -45,7 +45,11 @@
                 </b-row>
                 <b-row>
                   <b-col cols="12" class="foot-status">
-                    <label>lope komen share</label>
+                    <div class="homebtn">
+                      <i class="fa-regular fa-heart"></i> 20
+                      &nbsp;
+                      <i class="fa-regular fa-comment"></i> 500
+                    </div>
                   </b-col>
                 </b-row>
               </div>

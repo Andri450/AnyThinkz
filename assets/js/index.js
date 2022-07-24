@@ -51,7 +51,7 @@ export default {
               if (err.message.includes('Cannot read properties of null')) {
                 this.buat_identitas()
               } else if (err.message.includes('Client is offline')) {
-                this.$toast.error('Koneksi lu gk stabil', {
+                this.$toast.error('Koneksi tidak stabil', {
                   position: 'top-center',
                   timeout: 5000,
                   closeOnClick: true,
